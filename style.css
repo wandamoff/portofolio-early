@@ -1,0 +1,417 @@
+body {
+  font-family: "Plus Jakarta Sans", sans-serif;
+  background-color: #020617;
+  color: white;
+  margin: 0;
+  padding: 0;
+}
+
+/* ================= */
+/* GLOBAL SPACING FIX */
+/* ================= */
+
+/* Pastikan section home tidak pakai justify-between lagi */
+#home {
+  min-height: 100vh;
+  position: relative;
+}
+
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee 20s linear infinite;
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* Tambahan agar tidak ada garis potong di pinggir */
+.marquee-wrapper {
+  mask-image: linear-gradient(
+    to right,
+    transparent,
+    black 10%,
+    black 90%,
+    transparent
+  );
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent,
+    black 10%,
+    black 90%,
+    transparent
+  );
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* EFEK MENGAMBANG UNTUK GIF */
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+.animate-float {
+  animation: float 4s ease-in-out infinite !important;
+}
+/* ================= */
+/* UI ELEMENTS */
+/* ================= */
+
+.glass {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.gradient-text {
+  background: linear-gradient(90deg, #3b82f6, #93c5fd);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.blob {
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  background: #1d4ed8;
+  filter: blur(120px);
+  opacity: 0.2;
+  z-index: -1;
+  border-radius: 50%;
+}
+
+/* ================= */
+/* ABOUT */
+/* ================= */
+.name-effect {
+  position: relative;
+  display: inline-block;
+  color: #3b82f6; /* warna biru tema kamu */
+  font-weight: 700;
+  overflow: hidden;
+}
+
+.name-effect::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -120%;
+  width: 120%;
+  height: 100%;
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(59, 130, 246, 0.9),
+    transparent
+  );
+  animation: shine 3.5s infinite;
+}
+
+@keyframes shine {
+  0% {
+    left: -120%;
+  }
+  100% {
+    left: 120%;
+  }
+}
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.5;
+    transform: scale(0.95);
+  }
+}
+@keyframes twinkle {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.5;
+    transform: scale(0.8);
+  }
+}
+
+/* ================= */
+/* SKILLS SECTION */
+/* ================= */
+
+#skills .relative.h-2.bg-gray-800 {
+  background-color: rgba(243, 244, 246, 0.1) !important;
+  height: 8px;
+  border-radius: 9999px;
+}
+
+.skill-bar {
+  width: 0%;
+  height: 100%;
+  background: linear-gradient(90deg, #2563eb 0%, #7c3aed 100%);
+  border-radius: 9999px;
+  transition: width 2s cubic-bezier(0.1, 0.4, 0.4, 1);
+  box-shadow: 0 0 8px rgba(37, 99, 235, 0.2);
+}
+
+.skill-card {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.skill-bar[style*="width: 0%"] {
+  min-width: 5px;
+}
+
+/* ================= */
+/* EXPERIENCE */
+/* ================= */
+
+#experience .group {
+  transition: all 0.3s ease-in-out;
+}
+
+#experience .group:hover {
+  transform: translateY(-5px);
+  background-color: rgba(11, 17, 32, 1);
+  border-color: rgba(147, 51, 234, 0.5);
+}
+
+@media screen and (max-width: 768px) {
+  #experience .flex-row-reverse {
+    flex-direction: row !important;
+  }
+
+  #experience .left-timeline,
+  #experience .right-timeline {
+    justify-content: flex-start !important;
+  }
+
+  #experience .order-1.p-6 {
+    margin-left: 60px;
+    width: calc(100% - 70px) !important;
+  }
+
+  #experience .text-left.md:text-right {
+    text-align: left !important;
+  }
+
+  #experience .md:flex-row-reverse {
+    flex-direction: row !important;
+  }
+}
+
+/* ================= */
+/* PORTFOLIO */
+/* ================= */
+
+#portfolio .group {
+  transition: all 0.4s ease;
+}
+
+#portfolio .group:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+}
+
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-orient: vertical;
+  overflow: hidden;
+}
+
+/* ================= */
+/* RESPONSIVE SPACING */
+/* ================= */
+
+@media (max-width: 768px) {
+  section {
+    padding-top: 60px !important;
+    padding-bottom: 60px !important;
+  }
+
+  #home {
+    padding-top: 100px !important;
+    padding-bottom: 70px !important;
+  }
+}
+
+html {
+  scroll-padding-top: 45px;
+}
+
+section {
+  scroll-margin-top: 45px;
+  padding: 80px 0;
+}
+.typed-cursor {
+  color: #3b82f6; /* Warna biru sesuai tema kamu */
+  font-size: 1.5rem;
+}
+
+/* medsos */
+.wrapper {
+  display: flex; /* Memastikan ikon berjejer ke samping */
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  gap: 15px; /* Memberi jarak antar ikon agar tidak menempel */
+}
+
+.wrapper .icon {
+  position: relative;
+  background: #0b1120;
+  border: 1px solid #1e293b;
+  border-radius: 50%;
+  width: 45px;
+  height: 45px;
+  font-size: 18px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* Hapus flex-direction: column jika ada */
+  color: #94a3b8;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+/* Bagian Tooltip (Tetap seperti kemauanmu di bawah) */
+.wrapper .tooltip {
+  position: absolute;
+  bottom: 0;
+  left: 50%; /* Tambahkan ini agar tulisan di tengah ikon */
+  transform: translateX(-50%); /* Tambahkan ini agar benar-benar center */
+  font-size: 12px;
+  font-weight: bold;
+  background: #fbbf24;
+  color: #020617;
+  padding: 5px 10px;
+  border-radius: 5px;
+  white-space: nowrap; /* Agar tulisan tidak terpotong ke bawah */
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.wrapper .tooltip::before {
+  position: absolute;
+  content: "";
+  height: 8px;
+  width: 8px;
+  background: #fbbf24;
+  top: -3px;
+  left: 50%;
+  transform: translate(-50%) rotate(45deg);
+}
+
+/* Efek Hover: Hanya tulisan yang turun, ikon tetap di tempat */
+.wrapper .icon:hover .tooltip {
+  bottom: -45px;
+  opacity: 1;
+}
+
+/* Hover Warna Kuning Neon */
+.wrapper .icon:hover {
+  background: #fbbf24;
+  color: #020617;
+  border-color: #fbbf24;
+  box-shadow: 0 0 20px rgba(251, 191, 36, 0.6);
+}
+
+/* ======================== */
+/* DESIGNER CUSTOM CURSOR   */
+/* ======================== */
+html,
+body {
+  cursor: none !important;
+}
+
+#cursor-dot {
+  width: 6px;
+  height: 6px;
+  background-color: #3b82f6;
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 1000;
+  border-radius: 50%;
+  transition: transform 0.1s ease;
+}
+
+#cursor-outline {
+  width: 40px;
+  height: 40px;
+  border: 1px solid #3b82f6;
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 999;
+  border-radius: 50%;
+  /* INI KUNCINYA: Efek Invert yang estetik */
+  mix-blend-mode: difference;
+  border-color: white;
+  transition:
+    width 0.4s cubic-bezier(0.23, 1, 0.32, 1),
+    height 0.4s cubic-bezier(0.23, 1, 0.32, 1),
+    background-color 0.4s ease;
+}
+
+/* Saat hover link/tombol */
+.cursor-hover {
+  width: 70px !important;
+  height: 70px !important;
+  background-color: white; /* Bakal terlihat invert karena mix-blend-mode */
+  border: none !important;
+}
+
+.cursor-click-effect {
+  position: fixed;
+  width: 10px;
+  height: 10px;
+  background-color: rgba(59, 130, 246, 0.7);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 1001;
+  transform: translate(-50%, -50%);
+  animation: click-ripple 0.6s ease-out forwards;
+}
+
+@keyframes click-ripple {
+  0% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(8);
+    opacity: 0;
+  }
+}
